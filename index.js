@@ -1,8 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const app = express();
 
 require("dotenv").config();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -13,9 +17,7 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log("Error: ", err));
 
-// app.use("/api/items", require("./routes/api/items"));
-app.use("/api/user", require("./routes/api/users"));
-// app.use("/api/auth", require("./routes/api/auth"));
+app.use("/", require("./routes"));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server Started ${port}`));
