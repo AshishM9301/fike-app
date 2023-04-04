@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
 import Address from './container/Address/Address';
 import CategoriesSlider from './container/CategoriesSlider/CategoriesSlider';
 import Search from './container/Search/Search';
