@@ -1,6 +1,7 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import Address from './container/Address/Address';
+import Search from './container/Search/Search';
 
 type Props = {};
 
@@ -8,8 +9,10 @@ const App = (props: Props) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text>App</Text>
+      {/* <View style={styles.container}> */}
+        <Search />
         <Address />
+      {/* </View> */}
       </ScrollView>
     </SafeAreaView>
   );
