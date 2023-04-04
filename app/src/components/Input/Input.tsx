@@ -53,7 +53,6 @@ const Input = (props: Props) => {
 
   return (
     <View
-      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         borderWidth: focus ? 0.85 : 0.6,
         borderColor: focus ? '#000' : '#484848',
@@ -81,7 +80,6 @@ const Input = (props: Props) => {
         )}
       </View>
       <TextInput
-        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           backgroundColor: '#fff',
           width: '100%',
