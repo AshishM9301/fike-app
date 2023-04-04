@@ -1,6 +1,6 @@
-import { BottomSheet } from '@rneui/base';
+import {BottomSheet} from '@rneui/base';
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 type Props = {
   isVisible: boolean;
@@ -21,11 +21,11 @@ const BottomDrawer = (props: Props) => {
 
   return (
     <SafeAreaView>
-    <BottomSheet isVisible={isVisible} onBackdropPress={()=>handleVisible}>
-      <View>
-        <Text>Hello</Text>
-      </View>
-    </BottomSheet>
+      <BottomSheet isVisible={isVisible} onBackdropPress={() => handleVisible}>
+        <View>
+          <Text>Hello</Text>
+        </View>
+      </BottomSheet>
     </SafeAreaView>
   );
 };
