@@ -102,4 +102,50 @@ const uploadMultiFiles = async (req, res, next) => {
   }
 };
 
-module.exports = { uploadSingleFiles, uploadMultiFiles };
+const isFileValid = (file) => {
+  const type = file?.mimetype;
+  // console.log(type);
+  const validTypes = ["image/jpg", "image/jpeg", "image/png"];
+  if (validTypes.indexOf(type) === -1) {
+    return false;
+  }
+  return true;
+};
+
+const uploadFile = (files) => {
+  if (!files?.file?.length) {
+    //Single file
+
+    const file = files.file;
+
+    // checks if the file is valid
+    const isValid = isFileValid(file);
+
+    // console.log(isValid);
+
+    // creates a valid name by removing spaces
+    const fileName = encodeURIComponent(
+      file?.originalFilename?.replace(/\s/g, "-")
+    );
+
+    if (!isValid) {
+      // throes error if file isn't valid
+      return res.status(400).json({
+        status: "Fail",
+        message: "The file type is not a valid type",
+      });
+    }
+    try {
+      // renames the file in the directory
+      fs.renameSync(file.filepath, join(uploadFolder, fileName));
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    // Multiple files
+  }
+
+  // console.log(fields, files);
+};
+
+module.exports = { uploadSingleFiles, uploadMultiFiles, uploadFile };
