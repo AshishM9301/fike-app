@@ -1,6 +1,6 @@
 const User = require("../models/Users");
 
-let auth = (req, res, next) => {
+let auth = async (req, res, next) => {
   const { authorization } = req.headers;
 
   try {
@@ -10,9 +10,9 @@ let auth = (req, res, next) => {
 
     let token = authorization.replace("Bearer ", "");
 
-    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    await jwt.verify(token, process.env.SECRET, async (err, decoded) => {
       if (err) throw err;
-      User.findOne({ _id: ObjectId(decoded?.id) }).then((user) => {
+      await User.findOne({ _id: ObjectId(decoded?.id) }).then((user) => {
         if (!user)
           return res
             .status(400)
@@ -36,4 +36,14 @@ let auth = (req, res, next) => {
   }
 };
 
-module.exports = { auth };
+let adminAuth = async (req, res, next) => {
+  try {
+    if (req.user.userType !== "Admin") throw err;
+
+    next();
+  } catch (err) {
+    return res.status(400).json({ success: false, message: "Error :" + err });
+  }
+};
+
+module.exports = { auth, adminAuth };

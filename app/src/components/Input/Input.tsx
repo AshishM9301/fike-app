@@ -1,16 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
-import {
-  View,
-  Text,
-  NativeSyntheticEvent,
-  TextInputChangeEventData,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import * as Icon from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, {useState} from 'react';
+import {
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInput,
+  TextInputChangeEventData,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 type Props = {
   placeholder?: string;
@@ -60,17 +59,18 @@ const Input = (props: Props) => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        width: '100%',
+        flex: 1,
       }}>
       <View
         style={{
-          backgroundColor: '#efefef',
+          backgroundColor: '#fff',
           paddingHorizontal: 12,
-          height: '100%',
+          height: 42,
           justifyContent: 'center',
           alignItems: 'center',
           borderTopLeftRadius: 12,
           borderBottomLeftRadius: 12,
-          flex: 1,
         }}>
         {props.icon && props.iconMode === 'left' && (
           <FontAwesomeIcon
@@ -84,6 +84,9 @@ const Input = (props: Props) => {
           backgroundColor: '#fff',
           width: '100%',
           paddingHorizontal: 5,
+          fontSize: 16,
+          paddingVertical: 12,
+          flex: 1,
         }}
         placeholder={props.placeholder}
         placeholderTextColor="#aaa"
@@ -98,13 +101,14 @@ const Input = (props: Props) => {
         onPress={props.iconAction}
         disabled={props.iconActionDisabled}
         style={{
-          backgroundColor: '#efefef',
+          backgroundColor: '#fff',
           paddingHorizontal: 12,
-          height: '100%',
+          height: 42,
           justifyContent: 'center',
           alignItems: 'center',
           borderTopRightRadius: 12,
           borderBottomRightRadius: 12,
+          flexDirection: 'row',
         }}>
         {props.icon && props.iconMode === 'right' && (
           <FontAwesomeIcon
