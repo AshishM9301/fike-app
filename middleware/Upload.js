@@ -1,4 +1,8 @@
 const multer = require("multer");
+const fs = require("fs");
+const join = require("path").join;
+const path = require("path");
+const formidable = require("formidable");
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -113,6 +117,8 @@ const isFileValid = (file) => {
 };
 
 const uploadFile = (files) => {
+  const uploadFolder = path.join("uploads");
+
   if (!files?.file?.length) {
     //Single file
 
@@ -137,7 +143,7 @@ const uploadFile = (files) => {
     }
     try {
       // renames the file in the directory
-      fs.renameSync(file.filepath, join(uploadFolder, fileName));
+      return fs.renameSync(file.filepath, join(uploadFolder, fileName));
     } catch (error) {
       console.log(error);
     }

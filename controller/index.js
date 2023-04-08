@@ -1,4 +1,9 @@
-const { allProducts, addProduct } = require("./products");
+const {
+  allProducts,
+  addProduct,
+  getSingleProduct,
+  allCategoryProducts,
+} = require("./products");
 const {
   allCategories,
   addCategories,
@@ -15,4 +20,6 @@ module.exports = {
   allCategories,
   addCategories,
   allCategoriesPost,
+  getSingleProduct,
+  allCategoryProducts,
 };
